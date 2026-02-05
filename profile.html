@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 85%;
+            max-width: 750px;
+            margin: 30px auto;
+            text-align: center;
+        }
+
+        .profile-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .profile-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #00796b;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+
+        img:hover {
+            transform: scale(1.08);
+        }
+
+        h1 {
+            margin: 10px 0 5px;
+            color: #004d40;
+        }
+
+        h2 {
+            color: #00695c;
+        }
+
+        h3 {
+            color: #555;
+            margin-top: 0;
+        }
+
+        p {
+            color: #333;
+        }
+
+        ul {
+            text-align: left;
+            padding-left: 20px;
+        }
+
+        .skills-box { background-color: #fff8e1; }
+        .about-box { background-color: #e8f5e9; }
+        .coding-box { background-color: #e3f2fd; }
+        .social-box { background-color: #f3e5f5; }
+        .contact-box { background-color: #fce4ec; }
+
+        .social a {
+            text-decoration: none;
+            margin: 5px;
+            padding: 6px 12px;
+            background-color: #00796b;
+            color: white;
+            border-radius: 20px;
+            display: inline-block;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .social a:hover {
+            background-color: #004d40;
+            transform: scale(1.1);
+        }
+
+        footer {
+            font-size: 12px;
+            color: #444;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="profile-box">
+            <img src="profile.jpg" alt="Profile Photo">
+            <h1>B. Sai Harshith</h1>
+            <h3>Student | Web Learner</h3>
+        </div>
+
+        <div class="profile-box about-box">
+            <h2>About Me</h2>
+            <p>I am a student at <strong>Vasavi College of Engineering</strong> who enjoys learning web development and building simple websites using HTML and CSS.</p>
+        </div>
+
+        <div class="profile-box coding-box">
+            <h2>About Coding</h2>
+            <p>Coding is like solving puzzles and creating new things with logic. It improves my thinking skills and helps me turn ideas into real websites and programs.</p>
+        </div>
+
+        <div class="profile-box skills-box">
+            <h2>Skills</h2>
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>Basic JavaScript</li>
+                <li>C Programming</li>
+            </ul>
+        </div>
+
+        <div class="profile-box social-box social">
+            <h2>Social Links</h2>
+            <a href="https://github.com/bandarusaiharshith75-rgb" target="_blank">GitHub</a>
+            <a href="https://instagram.com/__harsh750" target="_blank">Instagram</a>
+        </div>
+
+        <div class="profile-box contact-box">
+            <h2>Contact</h2>
+            <p>Email: bandarusaiharshith75@gmail.com</p>
+            <p>Phone: 7569538465</p>
+        </div>
+
+        <footer>
+            © 2026 B.Sai Harshith
+        </footer>
+
+    </div>
+
+</body>
+</html>
