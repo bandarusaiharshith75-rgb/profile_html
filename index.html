@@ -1,8 +1,8 @@
-
 <!DOCTYPE html>
 <html>
 <head>
     <title>My Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
@@ -22,7 +22,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Floating Shapes */
+        
         .shapes {
             position: fixed;
             width: 100%;
@@ -41,27 +41,12 @@
         }
 
         @keyframes riseAndMorph {
-            0% {
-                transform: translateY(0) rotate(0deg);
-                border-radius: 0%;
-                opacity: 0.7;
-            }
-            70% {
-                border-radius: 0%;
-                opacity: 0.7;
-            }
-            85% {
-                border-radius: 50%;
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(-120vh) rotate(360deg);
-                border-radius: 50%;
-                opacity: 0;
-            }
+            0% { transform: translateY(0) rotate(0deg); border-radius: 0%; opacity: 0.7; }
+            70% { border-radius: 0%; opacity: 0.7; }
+            85% { border-radius: 50%; opacity: 0.5; }
+            100% { transform: translateY(-120vh) rotate(360deg); border-radius: 50%; opacity: 0; }
         }
 
-        /* Different sizes & speeds */
         .shape:nth-child(1) { left: 10%; width: 40px; height: 40px; animation-duration: 14s; }
         .shape:nth-child(2) { left: 25%; width: 25px; height: 25px; animation-duration: 18s; }
         .shape:nth-child(3) { left: 40%; width: 60px; height: 60px; animation-duration: 22s; }
@@ -79,6 +64,7 @@
             backdrop-filter: blur(6px);
             position: relative;
             z-index: 1;
+            padding: 0 15px;
         }
 
         .top-section h1 { margin: 0; font-size: 38px; color: #ffffff; }
@@ -150,16 +136,37 @@
             margin-top: 10px;
         }
 
-        @media (max-width: 900px) {
-            .bottom-section { grid-template-columns: 1fr; }
+       
+        @media (max-width: 1024px) {
+            .bottom-section {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            footer { grid-column: span 2; }
+        }
+
+       
+        @media (max-width: 600px) {
+            .top-section {
+                height: auto;
+                padding: 40px 15px;
+            }
+
+            .top-section h1 { font-size: 28px; }
+            .top-section h3 { font-size: 16px; }
+
+            .bottom-section {
+                grid-template-columns: 1fr;
+                padding: 20px;
+            }
+
             footer { grid-column: span 1; }
         }
+
     </style>
 </head>
 
 <body>
 
-    <!-- Animated Morphing Shapes -->
     <div class="shapes">
         <div class="shape"></div>
         <div class="shape"></div>
@@ -186,8 +193,8 @@
         <div class="profile-box education-box">
             <h2>Education</h2>
             <ul>
-                <li><strong>School:</strong> Sri Chaitanya Gosala,Vijayawada,Andhra Pradesh</li>
-                <li><strong>Intermediate:</strong> Sri Chaitanya Raman Bhavan,Vijayawada,Andhra Pradesh</li>
+                <li><strong>School:</strong> Sri Chaitanya Gosala, Vijayawada</li>
+                <li><strong>Intermediate:</strong> Sri Chaitanya Raman Bhavan, Vijayawada</li>
             </ul>
         </div>
 
