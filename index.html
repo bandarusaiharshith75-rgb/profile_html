@@ -1,147 +1,201 @@
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>My Profile</title>
-
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #a8edea, #fed6e3);
             margin: 0;
             padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #000000, #0f2027, #203a43, #2c5364);
+            background-size: 400% 400%;
+            animation: gradientShift 18s ease infinite;
         }
 
-        .container {
-            width: 85%;
-            max-width: 750px;
-            margin: 30px auto;
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Shapes */
+        .shapes {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            bottom: -120px;
+            background: rgba(255,255,255,0.08);
+            animation: riseAndMorph linear infinite;
+        }
+
+        @keyframes riseAndMorph {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                border-radius: 0%;
+                opacity: 0.7;
+            }
+            70% {
+                border-radius: 0%;
+                opacity: 0.7;
+            }
+            85% {
+                border-radius: 50%;
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateY(-120vh) rotate(360deg);
+                border-radius: 50%;
+                opacity: 0;
+            }
+        }
+
+        /* Different sizes & speeds */
+        .shape:nth-child(1) { left: 10%; width: 40px; height: 40px; animation-duration: 14s; }
+        .shape:nth-child(2) { left: 25%; width: 25px; height: 25px; animation-duration: 18s; }
+        .shape:nth-child(3) { left: 40%; width: 60px; height: 60px; animation-duration: 22s; }
+        .shape:nth-child(4) { left: 55%; width: 20px; height: 20px; animation-duration: 16s; }
+        .shape:nth-child(5) { left: 70%; width: 35px; height: 35px; animation-duration: 20s; }
+        .shape:nth-child(6) { left: 85%; width: 50px; height: 50px; animation-duration: 24s; }
+
+        .top-section {
+            height: 30vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(6px);
+            position: relative;
+            z-index: 1;
+        }
+
+        .top-section h1 { margin: 0; font-size: 38px; color: #ffffff; }
+        .top-section h3 { margin-top: 8px; color: #cccccc; font-weight: normal; }
+
+        .bottom-section {
+            min-height: 70vh;
+            padding: 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 1;
         }
 
         .profile-box {
-            background-color: #ffffff;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+            transition: all 0.4s ease;
+            color: #222;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        .profile-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        .about-box { background: #e8f5e9; }
+        .education-box { background: #ede7f6; }
+        .cert-box { background: #e0f7fa; }
+        .skills-box { background: #fff8e1; }
+        .social-box { background: #f3e5f5; }
+        .contact-box { background: #fce4ec; }
+
+        .about-box:hover { background: #2e7d32; color: #fff; }
+        .education-box:hover { background: #4527a0; color: #fff; }
+        .cert-box:hover { background: #006064; color: #fff; }
+        .skills-box:hover { background: #f57f17; color: #fff; }
+        .social-box:hover { background: #6a1b9a; color: #fff; }
+        .contact-box:hover { background: #b71c1c; color: #fff; }
+
+        .profile-box:hover h2,
+        .profile-box:hover p,
+        .profile-box:hover li {
+            color: #ffffff;
         }
 
-        img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid #00796b;
-            object-fit: cover;
-            transition: transform 0.4s;
-        }
-
-        img:hover {
-            transform: scale(1.08);
-        }
-
-        h1 {
-            margin: 10px 0 5px;
-            color: #1a237e;
-        }
-
-        h3 {
-            color: #6a1b9a;
-        }
-
-        p {
-            color: #333;
-        }
-
-        ul {
-            text-align: left;
-            padding-left: 20px;
-        }
-
-        .skills-box { background-color: #fff8e1; }
-        .about-box { background-color: #e8f5e9; }
-        .coding-box { background-color: #e3f2fd; }
-        .education-box { background-color: #ede7f6; }
-        .social-box { background-color: #f3e5f5; }
-        .contact-box { background-color: #fce4ec; }
-
-        .about-box:hover { background-color: #c8e6c9; }
-        .coding-box:hover { background-color: #bbdefb; }
-        .skills-box:hover { background-color: #ffecb3; }
-        .education-box:hover { background-color: #d1c4e9; }
-        .social-box:hover { background-color: #e1bee7; }
-        .contact-box:hover { background-color: #f8bbd0; }
-
-        .about-box h2 { color: #2e7d32; }
-        .coding-box h2 { color: #1565c0; }
-        .skills-box h2 { color: #f9a825; }
-        .education-box h2 { color: #e65100; }
-        .social-box h2 { color: #8e24aa; }
-        .contact-box h2 { color: #c62828; }
+        h2 { margin-top: 0; }
+        ul { padding-left: 18px; text-align: left; }
 
         .social a {
             text-decoration: none;
-            margin: 5px;
+            display: inline-block;
+            margin: 5px 5px 0 0;
             padding: 8px 14px;
-            background-color: #00796b;
+            background: #00796b;
             color: white;
             border-radius: 20px;
-            display: inline-block;
-            transition: background 0.3s, transform 0.3s;
             font-weight: bold;
-        }
-
-        .social a i {
-            margin-right: 6px;
+            transition: 0.3s;
         }
 
         .social a:hover {
-            background-color: #004d40;
+            background: #00bfa5;
             transform: scale(1.1);
         }
 
         footer {
+            grid-column: span 3;
+            text-align: center;
             font-size: 12px;
-            color: #444;
+            color: #aaa;
             margin-top: 10px;
+        }
+
+        @media (max-width: 900px) {
+            .bottom-section { grid-template-columns: 1fr; }
+            footer { grid-column: span 1; }
         }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+    <!-- Animated Morphing Shapes -->
+    <div class="shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
 
-        <div class="profile-box">
-            <img src="profile.jpg" alt="Profile Photo">
+    <div class="top-section">
+        <div>
             <h1>B. Sai Harshith</h1>
-            <h3>Student | Web Learner</h3>
+            <h3>Student | Web Developer</h3>
         </div>
+    </div>
+
+    <div class="bottom-section">
 
         <div class="profile-box about-box">
             <h2>About Me</h2>
-            <p>I am a student at <strong>Vasavi College of Engineering</strong> who enjoys learning web development and building simple websites using HTML and CSS.</p>
+            <p>I am a student at <strong>Vasavi College of Engineering</strong> who enjoys learning web development and building websites.</p>
         </div>
 
         <div class="profile-box education-box">
             <h2>Education</h2>
             <ul>
-                <li><strong>School:</strong> Sri Chaitanya School, Vijayawada, Andhra Pradesh</li>
-                <li><strong>Intermediate College:</strong> Raman Bhavan Sri Chaitanya College, Vijayawada, Andhra Pradesh</li>
+                <li><strong>School:</strong> Sri Chaitanya Gosala,Vijayawada,Andhra Pradesh</li>
+                <li><strong>Intermediate:</strong> Sri Chaitanya College,Vijayawada,Andhra Pradesh</li>
             </ul>
         </div>
 
-        <div class="profile-box coding-box">
-            <h2>About Coding</h2>
-            <p>Coding is like solving puzzles and creating new things with logic. It improves my thinking skills and helps me turn ideas into real websites and programs.</p>
+        <div class="profile-box cert-box">
+            <h2>Certifications</h2>
+            <ul>
+                <li><strong>Joy of Computing using Python</strong> – NPTEL</li>
+            </ul>
         </div>
 
         <div class="profile-box skills-box">
@@ -149,19 +203,15 @@
             <ul>
                 <li>HTML</li>
                 <li>CSS</li>
-                <li>Basic JavaScript</li>
+                <li>JavaScript Basics</li>
                 <li>C Programming</li>
             </ul>
         </div>
 
         <div class="profile-box social-box social">
             <h2>Social Links</h2>
-            <a href="https://github.com/bandarusaiharshith75-rgb" target="_blank">
-                <i class="fab fa-github"></i>GitHub
-            </a>
-            <a href="https://instagram.com/__harsh750" target="_blank">
-                <i class="fab fa-instagram"></i>Instagram
-            </a>
+            <a href="https://github.com/bandarusaiharshith75-rgb" target="_blank"><i class="fab fa-github"></i>GitHub</a>
+            <a href="https://instagram.com/__harsh750" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
         </div>
 
         <div class="profile-box contact-box">
@@ -171,7 +221,7 @@
         </div>
 
         <footer>
-            © 2026 B.Sai Harshith
+            © 2026 B. Sai Harshith
         </footer>
 
     </div>
