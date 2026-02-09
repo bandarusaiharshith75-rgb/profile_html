@@ -2,6 +2,10 @@
 <html>
 <head>
     <title>My Profile</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -86,12 +90,17 @@
         .social a {
             text-decoration: none;
             margin: 5px;
-            padding: 6px 12px;
+            padding: 8px 14px;
             background-color: #00796b;
             color: white;
             border-radius: 20px;
             display: inline-block;
             transition: background 0.3s, transform 0.3s;
+            font-weight: bold;
+        }
+
+        .social a i {
+            margin-right: 6px;
         }
 
         .social a:hover {
@@ -147,8 +156,12 @@
 
         <div class="profile-box social-box social">
             <h2>Social Links</h2>
-            <a href="https://github.com/bandarusaiharshith75-rgb" target="_blank">GitHub</a>
-            <a href="https://instagram.com/__harsh750" target="_blank">Instagram</a>
+            <a href="https://github.com/bandarusaiharshith75-rgb" target="_blank">
+                <i class="fab fa-github"></i>GitHub
+            </a>
+            <a href="https://instagram.com/__harsh750" target="_blank">
+                <i class="fab fa-instagram"></i>Instagram
+            </a>
         </div>
 
         <div class="profile-box contact-box">
